@@ -1,4 +1,4 @@
-#A pink Spotify based pomodoro timer/productivity web app
+**A pink Spotify based pomodoro timer/productivity web app**<br>
 *A refactored version of the Spotify + Pomodoro Repository*
 
 - The web app has a clean pink theme, and integrates the user's Spotify playlists into the web app
