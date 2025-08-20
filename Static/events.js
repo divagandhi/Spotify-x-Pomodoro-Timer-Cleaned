@@ -24,11 +24,11 @@ function switchModes(event) {
   timer(secondsForMode);
 }
 
-function setupActiveToggleEvents(buttons) {
-  buttons.forEach((button) => {
-    button.addEventListener("click", (event) => {
-      buttons.forEach((button) => button.classList.remove("active"));
-      event.target.classList.add("active");
-    });
-  });
-}
+// function setupActiveToggleEvents(buttons) {
+//   buttons.forEach((button) => {
+//     button.addEventListener("click", (event) => {
+//       buttons.forEach((button) => button.classList.remove("active"));
+//       event.target.classList.add("active");
+//     });
+//   });
+// }

@@ -38,12 +38,12 @@ export function populateSettingsForm(settings) {
   longBreakTimeInput.value = parseInt(settings.longBreakTime) / 60;
 }
 
-function setActiveButton(buttons, classPrefix, classEnding) {
-  Array.from(buttons)
-    .map((button) => (button.classList.remove("active"), button))
-    .find((button) => button.classList.contains(`${classPrefix}-${classEnding}`))
-    .classList.add("active");
-}
+// function setActiveButton(buttons, classPrefix, classEnding) {
+//   Array.from(buttons)
+//     .map((button) => (button.classList.remove("active"), button))
+//     .find((button) => button.classList.contains(`${classPrefix}-${classEnding}`))
+//     .classList.add("active");
+// }
 
 function setAppSettings(settings) {
   const pomodoroModeTime = document.querySelector("[data-pomodoro]");
