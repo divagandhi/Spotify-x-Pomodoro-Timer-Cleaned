@@ -1,0 +1,356 @@
+:root {
+  --font: "Poppins", sans-serif;
+  --color-accent: #ef2d98;
+}
+
+*::before,
+*::after,
+* {
+  margin: 0;
+  padding: 0;
+  box-sizing: inherit;
+}
+
+html {
+  box-sizing: border-box;
+  font-size: 62.5%;
+}
+
+body {
+  display: flex;
+  flex-direction: column;
+  justify-content: space-evenly;
+  align-items: center;
+  min-height: 90vh;
+  font-family: var(--font);
+  background-color: #ffd1ea;
+  color: var(--color-accent);
+}
+
+label {
+  display: block;
+}
+
+.radio-btn {
+  position: relative;
+  border: 0;
+  border-radius: 50%;
+  width: 35px;
+  height: 35px;
+  background-color: #ffd1ea;
+  color: #ef2d98;
+  font-size: 1.6rem;
+  cursor: pointer;
+  transition: background-color 150ms ease-in-out;
+
+  &[data-font].active {
+    background-color: #ef2d98;
+    color: #fff;
+  }
+}
+
+[data-accent-color].active {
+  &::before {
+    content: url("../assets/check.svg");
+    position: absolute;
+    transform: translate(-50%, -40%);
+  }
+}
+
+.font-sans-serif {
+  font-family: var(--font-sans-serif);
+}
+.icon {
+  width: 3rem;
+  height: 3rem;
+  cursor: pointer;
+}
+
+.main-heading {
+  font-size: 50px;
+  font-weight: 400;
+  text-align: center;
+}
+
+main {
+  width: 40rem;
+  height: 40rem;
+  border-radius: 50%;
+  text-align: center;
+}
+
+.modes {
+  font-size: 30px;
+  padding: 1.6rem 1rem;
+  border-radius: 10rem;
+}
+
+.mode {
+  margin-right: 2em;
+  text-decoration: none;
+  font-weight: 400;
+  color: #ffffff;
+  cursor: pointer;
+  transition: all 300ms ease-out;
+
+  &.active {
+    padding: 0.5em 1em;
+    border-radius: 50px;
+    color: #ef2d98;
+  }
+}
+
+.mode:last-child {
+  margin-right: 0;
+}
+
+.pomodoro {
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+  width: 100%;
+  height: 100%;
+  position: relative;
+  margin: 2.5rem 0;
+  text-align: center;
+  border-radius: 50%;
+  background: #ffd1ea;
+  box-shadow: 20px 20px 82px #ef2d98, -20px -20px 82px #ef2d98;
+
+  &::before {
+    content: "";
+    position: absolute;
+    /*border: 10px solid var(--color-accent);*/
+    border-radius: 50%;
+    width: 35rem;
+    height: 35rem;
+  }
+}
+
+.pomodoro_time {
+  font-size: 7rem;
+  font-weight: 400;
+}
+
+.settings-btn__wrap {
+  position: fixed;
+  top: 2.5rem;
+  left: 5.5rem;
+
+  & button {
+    border: 0;
+    background-color: transparent;
+  }
+}
+
+.settings-modal__container {
+  position: relative;
+  border-radius: 1.5rem;
+  margin: auto;
+  opacity: 0;
+  overflow: visible;
+  transition: opacity 200ms, transform 200ms allow-discrete;
+
+  &, &::backdrop {
+    transition:
+      display 250ms allow-discrete,
+      overlay 250ms allow-discrete,
+      opacity 250ms;
+    opacity: 0;
+  }
+
+  &::backdrop {
+    background: color-mix(in srgb, #ffd1ea, transparent 40%);
+  }
+
+  &:popover-open {
+    opacity: 1;
+
+    &::backdrop {
+      opacity: 1;
+    }
+  }
+
+  @starting-style {
+    &:popover-open,
+    &:popover-open::backdrop {
+      opacity: 0;
+    }
+  }
+}
+
+.settings-modal__header {
+  padding: 2rem 3rem;
+  border-bottom: 2px solid #eef1f9;
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+
+  & h3 {
+    font-size: 2.2rem;
+    font-weight: 600;
+  }
+
+  & button {
+    background-color: transparent;
+    border: 0;
+  }
+}
+
+.settings-modal__settings-wrap {
+  padding: 2rem 3rem;
+}
+
+.settings-modal__row-wrap {
+  &:not(:last-of-type) {
+    border-bottom: 2px solid #eef1f9;
+  }
+
+  &:not(:first-of-type) {
+    padding: 2rem 0;
+  }
+
+  &:first-of-type {
+    padding-bottom: 2rem;
+  }
+
+  &[class$="inline"] {
+    display: flex;
+    justify-content: space-between;
+    align-items: baseline;
+  }
+
+  & h4 {
+    font-size: 1.6rem;
+    color: #ef2d98;
+  }
+
+  & input[type="number"] {
+    padding: 1rem;
+    border-radius: 8px;
+    width: 15ch;
+    border: 0;
+    background-color: #eef1f9;
+
+    &:user-invalid {
+      outline: 2px solid red;
+    }
+  }
+}
+
+.settings-modal__inputs-wrap {
+  display: flex;
+  align-items: center;
+  flex-wrap: wrap;
+  gap: 2rem;
+
+  &[class$="--top-spacer"] {
+    margin-top: 1.5rem;
+  }
+
+  & label {
+    margin-bottom: 0.5rem;
+    font-size: 1.2rem;
+    font-weight: 500;
+    color: #afaeb4;
+  }
+}
+
+.settings-modal__btn {
+  position: absolute;
+  padding: 1rem 4rem;
+  border: 0;
+  background-color: var(--color-accent);
+  font: inherit;
+  font-size: 1.8rem;
+  bottom: 0;
+  left: 50%;
+  translate: -50% 50%;
+  border-radius: 10rem;
+  color: #fff;
+  cursor: pointer;
+  transition: background-color 120ms ease-in-out;
+
+  &:hover {
+    background-color: color-mix(in srgb, var(--color-accent) 85%, #ef2d98);
+  }
+}
+
+@media screen and (max-width: 480px) {
+  main {
+    transform: scale(0.85);
+  }
+
+  .modes {
+    font-size: 30px;
+  }
+
+  .settings-btn__wrap {
+    top: unset;
+    left: 1.5rem;
+    bottom: 1.5rem;
+  }
+
+  .settings-modal__row-wrap input[type="number"] {
+    width: 10ch;
+  }
+}
+.login-logout-btns {
+  display: flex;
+  position: absolute;
+  gap: 20px;
+  right: 10px;
+  top: 50px;
+}
+.tree-spotify-pomodoro {
+  display: flex;
+  gap: 200px;
+  align-items: center;
+  padding: 60px;
+}
+
+.playlist-container {
+  display: flex;
+  flex-direction: column; /* stack playlists vertically */
+  gap: 20px;
+  max-height: 450px;
+  overflow-y: auto;
+}
+.spotify-btn {
+  padding: 15px 30px;
+  border: none;
+  color: white;
+  font-size: 16px;
+  cursor: pointer;
+  border-radius: 5px;
+  transition: 0.3s;
+  background-color: var(--color-accent);
+}
+.spotify-btn:hover {
+  background-color: #eb6ab1; /* Lighter green on hover */
+}
+.info {
+  color: var(--color-accent);
+  padding: 0.5rem 2rem;
+  border-radius: 0.4rem;
+  font-size: 1.8rem;
+  margin-top: 0.5rem;
+}
+.progress-ring {
+  position: absolute;
+  top: 0;
+  left: 0;
+  transform: rotate(-90deg);
+  pointer-events: none;
+  color: var(--color-accent);
+  border-radius: 50px;
+}
+
+.progress-ring_circle {
+  transition: stroke-dashoffset 0.35s;
+  transform: rotate(0.25turn);
+  transform-origin: center;
+  color: var(--color-accent);
+  border-radius: 50px;
+}
